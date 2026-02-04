@@ -6,9 +6,131 @@
 </head>
 <body>
 
-<h1>Vue Example</h1>
+    <div class="w-full max-w-4xl bg-white shadow-xl rounded-2xl overflow-hidden p-0">
+        <!-- Header Section -->
+        <header class="bg-primary-pink text-white p-8 sm:p-10 text-center rounded-t-2xl">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">
+                Personal Profile: <span class="text-secondary-green">Daniel Whitwell</span>
+            </h1>
+            <p class="text-sm sm:text-base opacity-90">
+                Bachelor of Science in Computer Science | Cybersecurity & Forensics
+            </p>
+        </header>
 
-<p>The message is taken from 'data' inside the Vue instance by writing {{ message }} inside the div with id="app".</p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-6 sm:p-10">
+            <!-- Left Column: Image -->
+            <div class="lg:col-span-1 flex flex-col items-center">
+                <div class="w-full max-w-xs aspect-square overflow-hidden rounded-xl shadow-lg ring-4 ring-secondary-green p-1 transition duration-300 hover:ring-primary-pink">
+                    <!-- Placeholder image URL is used from the original request -->
+                    <img
+                        src="https://i.pinimg.com/1200x/21/7c/94/217c941f96d0457074411d1896d3625a.jpg"
+                        alt="Profile Image"
+                        class="w-full h-full object-cover rounded-lg"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300/3CB371/ffffff?text=Profile%20Pic';"
+                    >
+                </div>
+                <h2 class="mt-4 text-xl font-bold text-secondary-green">Picture Gallery</h2>
+                <p class="text-sm text-gray-500">Hover or tap on the sections below for details!</p>
+            </div>
+
+            <!-- Right Column: Hoverable Content Sections -->
+            <div class="lg:col-span-2 space-y-4">
+
+                <!-- 1. About Me -->
+                <div class="content-card bg-white rounded-lg shadow-md hover:shadow-xl">
+                    <div class="content-card-title font-semibold text-lg text-secondary-green flex justify-between items-center">
+                        <span>About Me</span>
+                        <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="content-card-details text-gray-700 border-t border-gray-100">
+                        <p>Hello! My name is Daniel Whitwell, and I'm excited to be starting this course.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Education / Achievements -->
+                <div class="content-card bg-white rounded-lg shadow-md hover:shadow-xl">
+                    <div class="content-card-title font-semibold text-lg text-secondary-green flex justify-between items-center">
+                        <span>Education / Achievements</span>
+                        <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <div class="content-card-details text-gray-700 border-t border-gray-100">
+                        <p>Graduated from GE in Senior High School (General Education track).</p>
+                    </div>
+                </div>
+
+                <!-- 3. Course -->
+                <div class="content-card bg-white rounded-lg shadow-md hover:shadow-xl">
+                    <div class="content-card-title font-semibold text-lg text-secondary-green flex justify-between items-center">
+                        <span>Current Course</span>
+                        <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2zm7-2V9.5h-5V5h-1a2 2 0 00-2 2v12a2 2 0 002 2h7z"></path></svg>
+                    </div>
+                    <div class="content-card-details text-gray-700 border-t border-gray-100">
+                        <p>Bachelor of Science in Computer Science Specializing in Cybersecurity & Forensics.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Hobbies & Interests -->
+                <div class="content-card bg-white rounded-lg shadow-md hover:shadow-xl">
+                    <div class="content-card-title font-semibold text-lg text-secondary-green flex justify-between items-center">
+                        <span>Hobbies & Interests</span>
+                        <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <div class="content-card-details text-gray-700 border-t border-gray-100">
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li>Watching anime</li>
+                            <li>Playing all sorts of video games</li>
+                            <li>Listening to music</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Goals In Life / Dream -->
+                <div class="content-card bg-white rounded-lg shadow-md hover:shadow-xl">
+                    <div class="content-card-title font-semibold text-lg text-secondary-green flex justify-between items-center">
+                        <span>Goals In Life / Dream</span>
+                        <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.104A9 9 0 1110.518 2.378a9 9 0 008.09 2.518z"></path></svg>
+                    </div>
+                    <div class="content-card-details text-gray-700 border-t border-gray-100">
+                        <p>Make money and make the love of my life the happiest girl in the world.</p>
+                    </div>
+                </div>
+
+                <!-- 6. IT Experience -->
+                <div class="content-card bg-white rounded-lg shadow-md hover:shadow-xl">
+                    <div class="content-card-title font-semibold text-lg text-secondary-green flex justify-between items-center">
+                        <span>IT Experience</span>
+                        <svg class="w-5 h-5 text-primary-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3.25m-7.5-3.5h7.5M16 4.75V4m-2 0V4m-4 0V4m-2 0V4"></path></svg>
+                    </div>
+                    <div class="content-card-details text-gray-700 border-t border-gray-100">
+                        <p>Basic skills in Java, Python, HTML, CSS and KALI.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- NEW IMAGE GALLERY SECTION (Replaces the placeholder divs) -->
+    <div class="container w-full max-w-4xl mt-8 p-4 bg-white/90 rounded-2xl shadow-xl flex flex-col items-center">
+        <h2 class="text-2xl font-bold text-primary-pink mb-4 border-b-2 border-secondary-green pb-1">Gaming Gallery</h2>
+        <div class="flex flex-wrap justify-center gap-4 w-full">
+            
+            <!-- Image 1: Counter-Strike Icon -->
+            <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg overflow-hidden shadow-md transition duration-300 hover:scale-105 hover:shadow-lg ring-2 ring-secondary-green">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtNU9sO1n1aybnZAFAaUnDTHvXShbAhTFAGg&s" alt="Counter-Strike 2 Icon" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/128x128/FF69B4/ffffff?text=CS2%20Icon';">
+            </div>
+            
+            <!-- Image 2: Anime Art 1 -->
+            <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg overflow-hidden shadow-md transition duration-300 hover:scale-105 hover:shadow-lg ring-2 ring-secondary-green">
+                <img src="https://i.pinimg.com/236x/4b/46/b4/4b46b404aa8542ca46a63ff375ca2e23.jpg" alt="Anime Character 1" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/128x128/FF69B4/ffffff?text=Art%201';">
+            </div>
+            
+            <!-- Image 3: Anime Character 2 -->
+            <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg overflow-hidden shadow-md transition duration-300 hover:scale-105 hover:shadow-lg ring-2 ring-secondary-green">
+                <img src="https://i.pinimg.com/474x/f5/dd/24/f5dd24b3418701f617275cfa6a265ac8.jpg" alt="Anime Character 2" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/128x128/FF69B4/ffffff?text=Art%202';">
+            </div>
+        </div>
+    </div>
 
 <div id="app">
   {{ message }}
