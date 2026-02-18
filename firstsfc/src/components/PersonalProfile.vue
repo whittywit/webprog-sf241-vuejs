@@ -1,89 +1,84 @@
 <template>
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <div class="profile-section">
+  <div class="profile-wrapper">
+    <header class="hero-section">
+      <div class="container">
         <img 
           src="https://i.pinimg.com/1200x/21/7c/94/217c941f96d0457074411d1896d3625a.jpg" 
           alt="Daniel Whitwell" 
-          class="avatar"
+          class="profile-pic"
         >
-        <h2>Daniel Whitwell</h2>
-        <p class="subtitle">Cybersecurity Student</p>
+        <h1>Daniel Whitwell</h1>
+        <p class="tagline">Cybersecurity Student @ Asia Pacific College</p>
       </div>
-      
-      <nav class="nav-menu">
-        <a href="#about" class="nav-item">About Me</a>
-        <a href="#education" class="nav-item">Education</a>
-        <a href="#it-experience" class="nav-item">IT Experience</a>
-        <a href="#hobbies" class="nav-item">Hobbies</a>
-        <a href="#comments" class="nav-item">Guestbook</a>
-      </nav>
-    </aside>
+    </header>
 
-    <main class="main-content">
-      <header class="content-header">
-        <h1>Personal Profile</h1>
-      </header>
+    <main class="container">
+      <section class="content-card">
+        <h2>About Me</h2>
+        <p>
+          Hello! I'm Daniel Whitwell. I am currently pursuing a Bachelor of Science in 
+          Computer Science, specializing in <strong>Cybersecurity & Forensics</strong>. 
+          I’m passionate about protecting digital landscapes and exploring the depths of IT security.
+        </p>
+      </section>
 
-      <div class="grid-layout">
-        <section id="about" class="card main-bio">
-          <h3>About Me</h3>
-          <p>
-            Hello! I'm Daniel Whitwell, currently studying a Bachelor of Science in 
-            Computer Science specializing in <strong>Cybersecurity & Forensics</strong> 
-            at Asia Pacific College.
-          </p>
-          <div class="details-grid">
-            <div class="detail-item">
-              <strong>Education:</strong> Graduated GE Track (SHS)
-            </div>
-            <div class="detail-item">
-              <strong>Goal:</strong> To excel in the IT industry and build a successful future.
-            </div>
-          </div>
-        </section>
-
-        <section class="card facts-card">
-          <h3>Quick Facts</h3>
-          <ul>
-            <li>🎮 Passionate Gamer</li>
-            <li>📺 Anime Enthusiast</li>
-            <li>🛡️ Cybersec Aspirant</li>
-            <li>💻 Java & Python Coder</li>
+      <div class="two-col-grid">
+        <section class="content-card">
+          <h2>Education</h2>
+          <ul class="styled-list">
+            <li><strong>Degree:</strong> BS Computer Science (Cybersecurity)</li>
+            <li><strong>High School:</strong> GE Track Graduate</li>
           </ul>
         </section>
 
-        <section id="it-experience" class="card experience-card">
-          <h3>Technical Skills</h3>
-          <div class="tags">
+        <section class="content-card">
+          <h2>IT Experience</h2>
+          <div class="skill-tags">
             <span class="tag">Java</span>
             <span class="tag">Python</span>
             <span class="tag">HTML/CSS</span>
             <span class="tag">Kali Linux</span>
             <span class="tag">SQL</span>
-            <span class="tag">Vue.js</span>
           </div>
         </section>
-
-        <section id="comments" class="card comment-section">
-          <h3>Guestbook</h3>
-          <p>Leave a message below!</p>
-          <form @submit.prevent="handleCommentSubmit" class="comment-form">
-            <input v-model="form.name" type="text" placeholder="Your Name" required />
-            <textarea v-model="form.comment" placeholder="Write a comment..." required></textarea>
-            <button type="submit" :disabled="loading">
-              {{ loading ? 'Sending...' : 'Post Comment' }}
-            </button>
-          </form>
-        </section>
       </div>
+
+      <section class="content-card">
+        <h2>Interests & Facts</h2>
+        <div class="interests-flex">
+          <div class="interest-item">🎮 Gaming</div>
+          <div class="interest-item">📺 Anime</div>
+          <div class="interest-item">🎵 Music</div>
+          <div class="interest-item">🛡️ Ethical Hacking</div>
+        </div>
+      </section>
+
+      <section id="comments" class="content-card guestbook">
+        <h2>Guestbook</h2>
+        <p>Leave a message to say hello!</p>
+        <form @submit.prevent="handleCommentSubmit" class="comment-form">
+          <div class="form-group">
+            <input v-model="form.name" type="text" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <textarea v-model="form.comment" placeholder="Your Message..." rows="3" required></textarea>
+          </div>
+          <button type="submit" :disabled="loading" class="submit-btn">
+            {{ loading ? 'Posting...' : 'Send Message' }}
+          </button>
+        </form>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Daniel Whitwell | Built with Vue.js & Supabase</p>
+    </footer>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
-// import { supabase } from '../supabase' // Uncomment when your supabase.js is ready
+// import { supabase } from '../supabase' // Uncomment when ready
 
 const loading = ref(false)
 const form = reactive({
@@ -94,130 +89,149 @@ const form = reactive({
 const handleCommentSubmit = async () => {
   loading.value = true
   // Insert Supabase logic here
-  console.log("Form Submitted:", form)
   setTimeout(() => {
     loading.value = false
-    alert("Message sent! (Backend connection pending)")
+    alert("Comment received! (Supabase connection pending)")
     form.name = ''
     form.comment = ''
-  }, 1000)
+  }, 800)
 }
 </script>
 
 <style scoped>
-:root {
-  --primary: #6366f1;
-  --bg: #f8fafc;
-  --text: #1e293b;
-  --card-bg: #ffffff;
-}
-
-.dashboard-container {
-  display: flex;
+/* Base Styles */
+.profile-wrapper {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f7f9;
   min-height: 100vh;
-  background-color: #f1f5f9;
-  font-family: 'Inter', sans-serif;
-  color: #1e293b;
+  margin: 0;
+  padding-bottom: 40px;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 280px;
-  background: #1e293b;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Header */
+.hero-section {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   color: white;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  height: 100vh;
-}
-
-.profile-section {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 60px 0;
+  margin-bottom: 40px;
 }
 
-.avatar {
-  width: 100px;
-  height: 100px;
+.profile-pic {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: 3px solid #6366f1;
-  margin-bottom: 1rem;
+  border: 4px solid #6366f1;
   object-fit: cover;
+  margin-bottom: 20px;
 }
 
-.nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.tagline {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
-.nav-item {
-  color: #94a3b8;
-  text-decoration: none;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  transition: all 0.2s;
-}
-
-.nav-item:hover {
-  background: #334155;
-  color: white;
-}
-
-/* Main Content */
-.main-content {
-  margin-left: 280px;
-  flex: 1;
-  padding: 2rem;
-}
-
-.grid-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
-}
-
-.card {
+/* Cards */
+.content-card {
   background: white;
-  padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.main-bio { grid-column: span 1; }
+.content-card h2 {
+  margin-top: 0;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
 
-/* Comment Form Styling */
-.comment-form {
+/* Grid & Layout Helpers */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.skill-tags {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.comment-form input, .comment-form textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
+.tag {
+  background: #6366f1;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.interests-flex {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.interest-item {
+  background: #f1f5f9;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Form Styles */
+.comment-form .form-group {
+  margin-bottom: 15px;
+}
+
+.comment-form input, 
+.comment-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
   border-radius: 6px;
+  font-size: 1rem;
 }
 
-.comment-form button {
+.submit-btn {
   background: #6366f1;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px 24px;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: background 0.2s;
 }
 
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { background: #e2e8f0; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; }
+.submit-btn:hover {
+  background: #4f46e5;
+}
+
+.site-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 40px;
+}
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .sidebar { width: 80px; padding: 1rem; }
-  .sidebar h2, .sidebar p, .nav-item { display: none; }
-  .main-content { margin-left: 80px; }
-  .grid-layout { grid-template-columns: 1fr; }
+@media (max-width: 600px) {
+  .two-col-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
